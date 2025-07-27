@@ -14,7 +14,7 @@ const Instructor = ({
       description: string;
     }>;
   };
-  isMobile: boolean;
+  isMobile: boolean | undefined;
 }) => {
   return (
     <Paper sx={{ p: 3, mb: 3 }}>

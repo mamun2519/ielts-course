@@ -24,6 +24,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import Instructor from "./Instructor";
+import CourseSummary from "./CourseSummary";
 
 const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
   // console.log("AboutCourse component rendered with courseData:", courseData);
@@ -130,7 +131,7 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
       />
 
       {/* How the course is laid out */}
-      <Paper sx={{ p: 3, mb: 3 }}>
+      {/* <Paper sx={{ p: 3, mb: 3 }}>
         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
           কোর্সটি যেভাবে সাজানো হয়েছে
         </Typography>
@@ -148,7 +149,13 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
             </ListItem>
           ))}
         </List>
-      </Paper>
+      </Paper> */}
+      <CourseSummary
+        data={courseData?.sections?.find(
+          (section) => section.type === "features"
+        )}
+        isMobile={isMobile}
+      />
 
       {/* What you will learn by doing the course */}
       <Paper sx={{ p: 3, mb: 3 }}>
