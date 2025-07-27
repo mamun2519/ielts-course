@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { Box, Container, Paper, useTheme, useMediaQuery } from "@mui/material";
@@ -58,13 +59,13 @@ export default function CoursePage({ courseData }: { courseData: any }) {
         {/* About Course Section */}
         <AboutSection
           courseData={courseData?.sections?.find(
-            (section) => section.type === "about"
+            (section: { type: string }) => section.type === "about"
           )}
         />
         {/* Student Testimonials */}
         <Testimonials
           courseData={courseData.sections?.find(
-            (section) => section.type == "testimonials"
+            (section: { type: string }) => section.type == "testimonials"
           )}
           isMobile={isMobile}
         />
@@ -74,7 +75,7 @@ export default function CoursePage({ courseData }: { courseData: any }) {
         {/* FAQ Section */}
         <Faq
           courseData={courseData.sections?.find(
-            (section) => section.type == "faq"
+            (section: { type: string }) => section.type == "faq"
           )}
         />
 

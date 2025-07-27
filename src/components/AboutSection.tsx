@@ -55,7 +55,9 @@ const AboutSection = ({
                           />
                         </ListItemIcon>
                         <ListItemText
-                          primary={domToReact(domNode.children)}
+                          primary={domToReact(
+                            domNode?.children as import("html-react-parser").DOMNode[]
+                          )}
                           primaryTypographyProps={{ variant: "body2" }}
                         />
                       </ListItem>
