@@ -13,7 +13,12 @@ import React from "react";
 const Faq = ({
   courseData,
 }: {
-  courseData: { faq: { question: string; answer: string }[] };
+  courseData: {
+    values: Array<{
+      question: string;
+      answer: string;
+    }>;
+  };
 }) => {
   return (
     <Paper sx={{ p: 4, mt: 4, mb: 4 }}>
@@ -35,7 +40,7 @@ const Faq = ({
       </Box>
 
       <Box sx={{ maxWidth: "800px", mx: "auto" }}>
-        {courseData?.faq?.map((faqItem, index) => (
+        {courseData?.values.slice(0, 3)?.map((faqItem, index) => (
           <Accordion
             key={index}
             sx={{

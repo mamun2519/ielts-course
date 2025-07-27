@@ -282,7 +282,11 @@ export default function CoursePage({ courseData }: { courseData: any }) {
         {/* Instructor Info */}
 
         {/* FAQ Section */}
-        <Faq courseData={courseData} />
+        <Faq
+          courseData={courseData.sections?.find(
+            (section) => section.type == "faq"
+          )}
+        />
 
         {/* Features Section */}
         <Features isMobile={isMobile} />
