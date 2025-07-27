@@ -27,6 +27,7 @@ import Instructor from "./Instructor";
 import CourseSummary from "./CourseSummary";
 import LearningPoint from "./LearningPoint";
 import CourseExclusiveFeature from "./CourseExclusiveFeature";
+import parse from "html-react-parser";
 
 const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
   // console.log("AboutCourse component rendered with courseData:", courseData);
@@ -64,7 +65,7 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
           color="text.secondary"
           sx={{ lineHeight: 1.6 }}
         >
-          {courseData?.description}
+          {parse(courseData?.description)}
         </Typography>
 
         <div className="mt-5">

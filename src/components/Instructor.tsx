@@ -1,6 +1,7 @@
 import { Person } from "@mui/icons-material";
 import { Avatar, Box, Paper, Typography } from "@mui/material";
 import React from "react";
+import parse from "html-react-parser";
 
 const Instructor = ({
   instructor,
@@ -43,7 +44,7 @@ const Instructor = ({
             {instructor?.values[0]?.short_description}
           </Typography>
           <Typography variant="caption" color="text.secondary">
-            {instructor?.values[0]?.description}
+            {parse(instructor?.values[0]?.description)}
           </Typography>
         </Box>
       </Box>

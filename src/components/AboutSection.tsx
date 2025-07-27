@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import parse, { domToReact, Element } from "html-react-parser";
 
 const AboutSection = ({
   courseData,
@@ -16,11 +17,10 @@ const AboutSection = ({
   courseData: {
     values: Array<{
       title: string;
-      description: string[];
+      description: string;
     }>;
   };
 }) => {
-  console.log("AboutSection component rendered with courseData:", courseData);
   return (
     <Paper sx={{ p: 3, mt: 4, mb: 4 }}>
       <Typography
@@ -30,26 +30,42 @@ const AboutSection = ({
       >
         কোর্স সম্পর্কে বিস্তারিত
       </Typography>
-      {courseData?.values?.map((section, index) => (
-        <Box key={index} sx={{ mb: 4 }}>
-          <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-            {section?.title}
-          </Typography>
-          <List>
-            {/* {section?.description?.map((item, itemIndex) => ( */}
-            <ListItem key={index} sx={{ px: 0, alignItems: "flex-start" }}>
-              <ListItemIcon sx={{ minWidth: 32, mt: 0.5 }}>
-                <CheckCircle sx={{ color: "#4caf50", fontSize: 18 }} />
-              </ListItemIcon>
-              <ListItemText
-                primary={section.description}
-                primaryTypographyProps={{ variant: "body2" }}
-              />
-            </ListItem>
-            {/* ))} */}
-          </List>
-        </Box>
-      ))}
+
+      {courseData?.values
+        ?.filter((_, index) => index === 0 || index === 2)
+        .map((section, index) => (
+          <Box key={index} sx={{ mb: 4 }}>
+            <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
+              {parse(section.title)}
+            </Typography>
+
+            {/* Parse description to extract list items */}
+            <List>
+              {parse(section.description, {
+                replace: (domNode) => {
+                  if (domNode.type === "tag" && domNode.name === "li") {
+                    return (
+                      <ListItem
+                        key={Math.random()} // ideally use stable key
+                        sx={{ px: 0, alignItems: "flex-start" }}
+                      >
+                        <ListItemIcon sx={{ minWidth: 32, mt: 0.5 }}>
+                          <CheckCircle
+                            sx={{ color: "#4caf50", fontSize: 18 }}
+                          />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={domToReact(domNode.children)}
+                          primaryTypographyProps={{ variant: "body2" }}
+                        />
+                      </ListItem>
+                    );
+                  }
+                },
+              })}
+            </List>
+          </Box>
+        ))}
     </Paper>
   );
 };

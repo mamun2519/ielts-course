@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import parse from "html-react-parser";
 
 const Faq = ({
   courseData,
@@ -119,7 +120,7 @@ const Faq = ({
                   textAlign: "left",
                 }}
               >
-                {faqItem?.question}
+                {parse(faqItem?.question)}
               </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{ px: 3, pb: 3 }}>
@@ -142,7 +143,7 @@ const Faq = ({
                       fontSize: "1rem",
                     }}
                   >
-                    {faqItem?.answer}
+                    {parse(faqItem?.answer)}
                   </Typography>
                 </Box>
               </Box>
