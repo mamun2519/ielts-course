@@ -260,27 +260,37 @@ export default function CoursePage() {
               >
                 {courseData.title}
               </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 2,
-                  flexWrap: "wrap",
-                }}
+              <Typography
+                variant="body1"
+                color="text.secondary"
+                sx={{ lineHeight: 1.6 }}
               >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
-                  <Rating value={4.5} precision={0.5} readOnly size="small" />
-                  <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-                    4.5
+                {courseData.description}
+              </Typography>
+
+              <div className="mt-5">
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+                    <Rating value={4.5} precision={0.5} readOnly size="small" />
+                    <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+                      4.5
+                    </Typography>
+                  </Box>
+                  <Typography variant="body2" color="text.secondary">
+                    2,220 reviews
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    33,017 students
                   </Typography>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
-                  2,220 reviews
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  33,017 students
-                </Typography>
-              </Box>
+              </div>
             </Paper>
 
             {/* Description */}
@@ -580,10 +590,7 @@ export default function CoursePage() {
                   </Box>
                 </Box>
               </Box>
-            </Paper>
-
-            {/* CTA */}
-            <Paper sx={{ mb: 3, overflow: "hidden" }}>
+              {/* CTA */}
               <Box sx={{ p: 3 }}>
                 <Box
                   sx={{
@@ -638,22 +645,7 @@ export default function CoursePage() {
                   🛡️ 14 day money back guarantee
                 </Typography>
               </Box>
-            </Paper>
-
-            {/* Check Lists - Updated with all checklist items */}
-            <Paper sx={{ mb: 3, overflow: "hidden" }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: "bold",
-                  p: 2,
-                  bgcolor: "#e3f2fd",
-                  textAlign: "center",
-                  m: 0,
-                }}
-              >
-                Check Lists
-              </Typography>
+              {/* check list */}
               <Box sx={{ p: 3 }}>
                 <List dense sx={{ p: 0 }}>
                   {courseData.checklist.map((item, index) => (
@@ -661,7 +653,7 @@ export default function CoursePage() {
                       key={index}
                       sx={{ px: 0, alignItems: "flex-start" }}
                     >
-                      <ListItemIcon sx={{ minWidth: 32, mt: 0.5 }}>
+                      <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
                         <CheckCircle sx={{ color: "#4caf50", fontSize: 18 }} />
                       </ListItemIcon>
                       <ListItemText

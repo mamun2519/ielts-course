@@ -30,8 +30,8 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navigationItems = [
-    { label: "ক্লাস ৬-১২", hasDropdown: true },
-    { label: "স্কিলস", hasDropdown: true },
+    //     { label: "ক্লাস ৬-১২", hasDropdown: true },
+    //     { label: "স্কিলস", hasDropdown: true },
     { label: "ভর্তি পরীক্ষা", hasDropdown: false },
     { label: "অনলাইন ব্যাচ", hasDropdown: true },
     { label: "ইংলিশ সেন্টার", hasDropdown: true },
@@ -226,7 +226,7 @@ export default function Navbar() {
                 fontSize: "0.9rem",
                 fontWeight: "medium",
                 "&:hover": {
-                  bgcolor: "#45a049",
+                  bgcolor: "#4caf50",
                 },
               }}
             >
