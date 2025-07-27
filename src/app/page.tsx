@@ -1,11 +1,20 @@
 import CoursePage from "@/components/CourseInfo";
 import Navbar from "@/components/Navbar";
 
-export default function Home() {
+export default async function Home() {
+  const data = await fetch(
+    "https://api.10minuteschool.com/discovery-service/api/v1/products/ielts-course?"
+  );
+  const courseData = await data.json();
+  if (!courseData) {
+    return <div>Loading...</div>;
+  }
+
+  // console.log(courseData);
   return (
     <div>
       <Navbar />
-      <CoursePage />
+      <CoursePage courseData={courseData?.data} />
     </div>
   );
 }

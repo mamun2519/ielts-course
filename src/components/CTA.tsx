@@ -54,7 +54,7 @@ const CTA = ({
             py: 1.5,
           }}
         >
-          {courseData.cta_text}
+          {courseData?.cta_text}
         </Button>
         <IconButton sx={{ border: 1, borderColor: "divider" }}>
           <FavoriteBorder />

@@ -60,7 +60,7 @@ const Testimonials = ({
           gap: "24px",
         }}
       >
-        {courseData.testimonials.map((testimonial, index) => (
+        {courseData?.testimonials?.map((testimonial, index) => (
           <Card
             key={index}
             sx={{
@@ -98,9 +98,7 @@ const Testimonials = ({
               <Typography
                 variant="h4"
                 sx={{ color: "white", fontFamily: "serif", mt: -0.5 }}
-              >
-                "
-              </Typography>
+              ></Typography>
             </Box>
 
             <CardContent sx={{ p: 0 }}>
@@ -154,7 +152,7 @@ const Testimonials = ({
                     </Typography>
                   </Box>
                   <Chip
-                    label={testimonial.description}
+                    label={testimonial?.description}
                     size="small"
                     sx={{
                       bgcolor: "#e8f5e8",
@@ -178,7 +176,7 @@ const Testimonials = ({
                     textAlign: "justify",
                   }}
                 >
-                  {testimonial.testimonial}
+                  {testimonial?.testimonial}
                 </Typography>
               </Box>
 

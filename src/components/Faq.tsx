@@ -35,7 +35,7 @@ const Faq = ({
       </Box>
 
       <Box sx={{ maxWidth: "800px", mx: "auto" }}>
-        {courseData.faq.map((faqItem, index) => (
+        {courseData?.faq?.map((faqItem, index) => (
           <Accordion
             key={index}
             sx={{
@@ -114,7 +114,7 @@ const Faq = ({
                   textAlign: "left",
                 }}
               >
-                {faqItem.question}
+                {faqItem?.question}
               </Typography>
             </AccordionSummary>
             <AccordionDetails sx={{ px: 3, pb: 3 }}>
@@ -137,7 +137,7 @@ const Faq = ({
                       fontSize: "1rem",
                     }}
                   >
-                    {faqItem.answer}
+                    {faqItem?.answer}
                   </Typography>
                 </Box>
               </Box>

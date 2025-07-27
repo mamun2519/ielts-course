@@ -52,14 +52,14 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
           component="h1"
           sx={{ fontWeight: "bold", mb: 2, wordBreak: "break-word" }}
         >
-          {courseData.title}
+          {courseData?.title}
         </Typography>
         <Typography
           variant="body1"
           color="text.secondary"
           sx={{ lineHeight: 1.6 }}
         >
-          {courseData.description}
+          {courseData?.description}
         </Typography>
 
         <div className="mt-5">
@@ -101,20 +101,20 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
           }}
         >
           <Avatar
-            src={courseData.instructor.image}
+            src={courseData?.instructor?.image}
             sx={{ width: 50, height: 50 }}
           >
             <Person />
           </Avatar>
           <Box>
             <Typography variant="body1" sx={{ fontWeight: "bold" }}>
-              {courseData.instructor.name}
+              {courseData?.instructor?.name}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {courseData.instructor.short_description}
+              {courseData?.instructor?.short_description}
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              {courseData.instructor.description}
+              {courseData?.instructor?.description}
             </Typography>
           </Box>
         </Box>
@@ -126,14 +126,14 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
           কোর্সটি যেভাবে সাজানো হয়েছে
         </Typography>
         <List>
-          {courseData.features.map((feature, index) => (
+          {courseData?.features?.map((feature, index) => (
             <ListItem key={index} sx={{ px: 0, alignItems: "flex-start" }}>
               <ListItemIcon sx={{ mt: 1 }}>
                 <School lsx={{ color: "#1976d2" }} />
               </ListItemIcon>
               <ListItemText
-                primary={feature.title}
-                secondary={feature.subtitle}
+                primary={feature?.title}
+                secondary={feature?.subtitle}
                 primaryTypographyProps={{ fontWeight: "bold" }}
               />
             </ListItem>
@@ -147,7 +147,7 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
           কোর্সটি করে যা শিখবেন
         </Typography>
         <div>
-          {courseData.learningPoints.map((point, index) => (
+          {courseData?.learningPoints?.map((point, index) => (
             <Box
               key={index}
               sx={{
@@ -178,13 +178,13 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
           কোর্স এক্সক্লুসিভ ফিচার
         </Typography>
-        {courseData.exclusiveFeatures.map((feature, index) => (
+        {courseData?.exclusiveFeatures?.map((feature, index) => (
           <Box key={index} sx={{ mb: 3 }}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1 }}>
               {feature.title}
             </Typography>
             <List dense>
-              {feature.checklist.map((item, itemIndex) => (
+              {feature?.checklist?.map((item, itemIndex) => (
                 <ListItem key={itemIndex} sx={{ px: 0 }}>
                   <ListItemIcon sx={{ minWidth: 32 }}>
                     <CheckCircle sx={{ color: "#4caf50", fontSize: 18 }} />

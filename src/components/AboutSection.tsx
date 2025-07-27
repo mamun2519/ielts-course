@@ -24,13 +24,13 @@ const AboutSection = ({
       >
         কোর্স সম্পর্কে বিস্তারিত
       </Typography>
-      {courseData.aboutSections.map((section, index) => (
+      {courseData?.aboutSections?.map((section, index) => (
         <Box key={index} sx={{ mb: 4 }}>
           <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-            {section.title}
+            {section?.title}
           </Typography>
           <List>
-            {section.description.map((item, itemIndex) => (
+            {section?.description?.map((item, itemIndex) => (
               <ListItem
                 key={itemIndex}
                 sx={{ px: 0, alignItems: "flex-start" }}

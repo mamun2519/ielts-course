@@ -221,7 +221,9 @@ const courseData = {
   ],
 };
 
-export default function CoursePage() {
+// type CourseData = typeof courseData;
+
+export default function CoursePage({ courseData }: { courseData: any }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
