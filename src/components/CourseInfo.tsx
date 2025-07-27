@@ -43,6 +43,9 @@ import {
 import AboutCourse from "./AboutCourse";
 import Trailer from "./Trailer";
 import CTA from "./CTA";
+import CheckList from "./CheckList";
+import AboutSection from "./AboutSection";
+import Testimonials from "./Testimonials";
 
 // Complete mock data from your API
 const courseData = {
@@ -253,24 +256,7 @@ export default function CoursePage() {
               {/* CTA */}
               <CTA courseData={courseData} isMobile={isMobile} />
               {/* check list */}
-              <Box sx={{ p: 3 }}>
-                <List dense sx={{ p: 0 }}>
-                  {courseData.checklist.map((item, index) => (
-                    <ListItem
-                      key={index}
-                      sx={{ px: 0, alignItems: "flex-start" }}
-                    >
-                      <ListItemIcon sx={{ minWidth: 28, mt: 0.5 }}>
-                        <CheckCircle sx={{ color: "#4caf50", fontSize: 18 }} />
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={item.text}
-                        primaryTypographyProps={{ variant: "body2" }}
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
+              <CheckList courseData={courseData} />
             </Paper>
           </div>
         </div>
@@ -278,98 +264,11 @@ export default function CoursePage() {
         {/* Additional Sections */}
 
         {/* About Course Section */}
-        <Paper sx={{ p: 3, mt: 4, mb: 4 }}>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ fontWeight: "bold", mb: 3 }}
-          >
-            কোর্স সম্পর্কে বিস্তারিত
-          </Typography>
-          {courseData.aboutSections.map((section, index) => (
-            <Box key={index} sx={{ mb: 4 }}>
-              <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-                {section.title}
-              </Typography>
-              <List>
-                {section.description.map((item, itemIndex) => (
-                  <ListItem
-                    key={itemIndex}
-                    sx={{ px: 0, alignItems: "flex-start" }}
-                  >
-                    <ListItemIcon sx={{ minWidth: 32, mt: 0.5 }}>
-                      <CheckCircle sx={{ color: "#4caf50", fontSize: 18 }} />
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={item}
-                      primaryTypographyProps={{ variant: "body2" }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
-            </Box>
-          ))}
-        </Paper>
-
+        <AboutSection courseData={courseData} />
         {/* Student Testimonials */}
-        <Paper sx={{ p: 3, mt: 4, mb: 4 }}>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ fontWeight: "bold", mb: 3 }}
-          >
-            শিক্ষার্থীরা যা বলছে
-          </Typography>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isMobile
-                ? "1fr"
-                : "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "24px",
-            }}
-          >
-            {courseData.testimonials.map((testimonial, index) => (
-              <Card key={index} sx={{ p: 2 }}>
-                <CardContent>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 2,
-                      mb: 2,
-                    }}
-                  >
-                    <Avatar
-                      src={testimonial.profile_image}
-                      sx={{ width: 40, height: 40 }}
-                    >
-                      {testimonial.name.charAt(0)}
-                    </Avatar>
-                    <Box>
-                      <Typography
-                        variant="subtitle2"
-                        sx={{ fontWeight: "bold" }}
-                      >
-                        {testimonial.name}
-                      </Typography>
-                      <Typography variant="caption" color="primary">
-                        {testimonial.description}
-                      </Typography>
-                    </Box>
-                  </Box>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{ fontStyle: "italic" }}
-                  >
-                    "{testimonial.testimonial}"
-                  </Typography>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Paper>
+        <Testimonials courseData={courseData} isMobile={isMobile} />
+
+        {/* Instructor Info */}
 
         {/* FAQ Section */}
         <Paper sx={{ p: 3, mt: 4, mb: 4 }}>
