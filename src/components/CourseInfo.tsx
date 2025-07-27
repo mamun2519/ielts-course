@@ -220,27 +220,7 @@ export default function CoursePage() {
   return (
     <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", py: 3 }}>
       <Container maxWidth="xl">
-        {/* Requirements Section */}
-        <Paper sx={{ p: 3, mb: 4 }}>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ fontWeight: "bold", mb: 2 }}
-          >
-            Requirements
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            Please follow the wireframe, or you can visit our landing page as
-            mentioned previously
-          </Typography>
-        </Paper>
-
         {/* Header (Not Mandatory) */}
-        <Paper sx={{ p: 2, mb: 3, textAlign: "center", bgcolor: "#e3f2fd" }}>
-          <Typography variant="h6" color="text.secondary">
-            Header (Not Mandatory)
-          </Typography>
-        </Paper>
 
         {/* Main Content Layout - Responsive */}
         <div
@@ -549,18 +529,6 @@ export default function CoursePage() {
           >
             {/* Trailer */}
             <Paper sx={{ mb: 3, overflow: "hidden" }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: "bold",
-                  p: 2,
-                  bgcolor: "#e3f2fd",
-                  textAlign: "center",
-                  m: 0,
-                }}
-              >
-                Trailer
-              </Typography>
               <Box sx={{ position: "relative" }}>
                 <CardMedia
                   component="img"
@@ -616,18 +584,6 @@ export default function CoursePage() {
 
             {/* CTA */}
             <Paper sx={{ mb: 3, overflow: "hidden" }}>
-              <Typography
-                variant="h6"
-                sx={{
-                  fontWeight: "bold",
-                  p: 2,
-                  bgcolor: "#e3f2fd",
-                  textAlign: "center",
-                  m: 0,
-                }}
-              >
-                CTA
-              </Typography>
               <Box sx={{ p: 3 }}>
                 <Box
                   sx={{

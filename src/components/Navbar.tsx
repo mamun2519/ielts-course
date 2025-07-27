@@ -1,241 +1,312 @@
 "use client";
-import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-}));
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Typography,
+  InputBase,
+  Button,
+  IconButton,
+  useTheme,
+  useMediaQuery,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+} from "@mui/material";
+import {
+  Search,
+  Phone,
+  KeyboardArrowDown,
+  Menu,
+  Close,
+} from "@mui/icons-material";
+import { useState } from "react";
 
 export default function Navbar() {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
-    React.useState<null | HTMLElement>(null);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const navigationItems = [
+    { label: "ক্লাস ৬-১২", hasDropdown: true },
+    { label: "স্কিলস", hasDropdown: true },
+    { label: "ভর্তি পরীক্ষা", hasDropdown: false },
+    { label: "অনলাইন ব্যাচ", hasDropdown: true },
+    { label: "ইংলিশ সেন্টার", hasDropdown: true },
+    { label: "আরো", hasDropdown: true },
+  ];
 
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleMobileMenuToggle = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
-  );
 
   return (
-    <div className="max-w-[766px] md:max-w-7xl 2xl:max-w-[1440px] mx-auto flex flex-row items-center justify-between pt-4 text-black font-medium  ">
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
+    <>
+      <AppBar
+        position="sticky"
+        sx={{
+          bgcolor: "white",
+          boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+          borderBottom: "1px solid #e0e0e0",
+        }}
+      >
+        <Toolbar sx={{ px: { xs: 2, md: 3 }, py: 1 }}>
+          {/* Mobile Menu Button */}
+          {isMobile && (
             <IconButton
-              size="large"
               edge="start"
               color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
+              aria-label="menu"
+              onClick={handleMobileMenuToggle}
+              sx={{ mr: 2, color: "black" }}
             >
-              <MenuIcon />
+              <Menu />
             </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ display: { xs: "none", sm: "block" } }}
+          )}
+
+          {/* Logo */}
+          <Box
+            sx={{ display: "flex", alignItems: "center", mr: { xs: 2, md: 4 } }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  color: "black",
+                  fontSize: { xs: "1rem", md: "1.25rem" },
+                  whiteSpace: "nowrap",
+                }}
+              >
+                <span style={{ color: "#e91e63" }}>10</span>
+                <span
+                  style={{
+                    fontSize: "0.7em",
+                    verticalAlign: "super",
+                    color: "#e91e63",
+                  }}
+                >
+                  MINUTE
+                </span>
+              </Typography>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  color: "black",
+                  ml: 0.5,
+                  fontSize: { xs: "1rem", md: "1.25rem" },
+                  whiteSpace: "nowrap",
+                }}
+              >
+                SCHOOL
+              </Typography>
+            </Box>
+          </Box>
+
+          {/* Search Bar - Hidden on mobile */}
+          {!isMobile && (
+            <Box
+              sx={{
+                position: "relative",
+                backgroundColor: "#f5f5f5",
+                borderRadius: "25px",
+                width: "100%",
+                maxWidth: "400px",
+                mx: 2,
+                display: "flex",
+                alignItems: "center",
+              }}
             >
-              MUI
-            </Typography>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
+              <Box sx={{ p: 1, pl: 2 }}>
+                <Search sx={{ color: "#666", fontSize: 20 }} />
+              </Box>
+              <InputBase
+                placeholder="স্কিলস কোর্স, কিংবা বুক প্রোগ্রাম সার্চ করুন..."
+                sx={{
+                  flex: 1,
+                  py: 1,
+                  pr: 2,
+                  fontSize: "0.9rem",
+                  "& ::placeholder": {
+                    color: "#666",
+                    opacity: 1,
+                  },
+                }}
               />
-            </Search>
-            <Box sx={{ flexGrow: 1 }} />
-            <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
-              >
-                <Badge badgeContent={4} color="error">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="error">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
             </Box>
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
-              >
-                <MoreIcon />
-              </IconButton>
+          )}
+
+          {/* Spacer for mobile */}
+          {isMobile && <Box sx={{ flexGrow: 1 }} />}
+
+          {/* Navigation Items - Hidden on mobile */}
+          {!isMobile && (
+            <Box sx={{ display: "flex", alignItems: "center", gap: 3, ml: 2 }}>
+              {navigationItems.map((item, index) => (
+                <Button
+                  key={index}
+                  sx={{
+                    color: "black",
+                    textTransform: "none",
+                    fontSize: "0.9rem",
+                    fontWeight: "normal",
+                    minWidth: "auto",
+                    p: 1,
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "#e91e63",
+                    },
+                  }}
+                  endIcon={
+                    item.hasDropdown ? (
+                      <KeyboardArrowDown sx={{ fontSize: 16 }} />
+                    ) : null
+                  }
+                >
+                  {item.label}
+                </Button>
+              ))}
             </Box>
-          </Toolbar>
-        </AppBar>
-        {renderMobileMenu}
-        {renderMenu}
-      </Box>
-    </div>
+          )}
+
+          {/* Right Side Items */}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: { xs: 1, md: 2 },
+              ml: "auto",
+            }}
+          >
+            {/* Language Selector */}
+            <Button
+              sx={{
+                color: "black",
+                textTransform: "none",
+                fontSize: "0.9rem",
+                fontWeight: "normal",
+                minWidth: "auto",
+                p: 1,
+                "&:hover": {
+                  backgroundColor: "transparent",
+                },
+              }}
+            >
+              🌐 EN
+            </Button>
+
+            {/* Phone Number */}
+            <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+              <Phone sx={{ color: "#4caf50", fontSize: 18 }} />
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "#4caf50",
+                  fontWeight: "medium",
+                  fontSize: "0.9rem",
+                }}
+              >
+                16910
+              </Typography>
+            </Box>
+
+            {/* Login Button */}
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#4caf50",
+                color: "white",
+                textTransform: "none",
+                borderRadius: "6px",
+                px: { xs: 2, md: 3 },
+                py: 1,
+                fontSize: "0.9rem",
+                fontWeight: "medium",
+                "&:hover": {
+                  bgcolor: "#45a049",
+                },
+              }}
+            >
+              লগ-ইন
+            </Button>
+          </Box>
+        </Toolbar>
+      </AppBar>
+
+      {/* Mobile Drawer */}
+      <Drawer
+        anchor="left"
+        open={mobileMenuOpen}
+        onClose={handleMobileMenuToggle}
+        sx={{
+          "& .MuiDrawer-paper": {
+            width: 280,
+            pt: 2,
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            px: 2,
+            mb: 2,
+          }}
+        >
+          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+            Menu
+          </Typography>
+          <IconButton onClick={handleMobileMenuToggle}>
+            <Close />
+          </IconButton>
+        </Box>
+
+        {/* Mobile Search */}
+        <Box sx={{ px: 2, mb: 2 }}>
+          <Box
+            sx={{
+              backgroundColor: "#f5f5f5",
+              borderRadius: "25px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Box sx={{ p: 1, pl: 2 }}>
+              <Search sx={{ color: "#666", fontSize: 20 }} />
+            </Box>
+            <InputBase
+              placeholder="সার্চ করুন..."
+              sx={{
+                flex: 1,
+                py: 1,
+                pr: 2,
+                fontSize: "0.9rem",
+              }}
+            />
+          </Box>
+        </Box>
+
+        <List>
+          {navigationItems.map((item, index) => (
+            <ListItem key={index} sx={{ py: 1 }}>
+              <ListItemText
+                primary={item.label}
+                sx={{
+                  "& .MuiListItemText-primary": {
+                    fontSize: "1rem",
+                    fontWeight: "medium",
+                  },
+                }}
+              />
+              {item.hasDropdown && <KeyboardArrowDown />}
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </>
   );
 }
