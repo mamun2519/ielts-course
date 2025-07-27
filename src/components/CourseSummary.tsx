@@ -29,7 +29,7 @@ const CourseSummary = ({
         {data?.values?.map((feature, index) => (
           <ListItem key={index} sx={{ px: 0, alignItems: "flex-start" }}>
             <ListItemIcon sx={{ mt: 1 }}>
-              <School lsx={{ color: "#1976d2" }} />
+              <School sx={{ color: "#1976d2" }} />
             </ListItemIcon>
             <ListItemText
               primary={feature?.title}

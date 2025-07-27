@@ -1,27 +1,13 @@
 import { IAboutCourse } from "@/types/aboutCourse";
 import {
   AccessTime,
-  CheckCircle,
   Group,
   MenuBook,
-  Person,
   Quiz,
   Schedule,
-  School,
   VideoLibrary,
 } from "@mui/icons-material";
-import {
-  Avatar,
-  Box,
-  Chip,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Paper,
-  Rating,
-  Typography,
-} from "@mui/material";
+import { Box, Chip, Paper, Rating, Typography } from "@mui/material";
 import React from "react";
 import Instructor from "./Instructor";
 import CourseSummary from "./CourseSummary";
