@@ -261,8 +261,6 @@ export default function CoursePage() {
           </div>
         </div>
 
-        {/* Additional Sections */}
-
         {/* About Course Section */}
         <AboutSection courseData={courseData} />
         {/* Student Testimonials */}
