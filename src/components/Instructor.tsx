@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Person } from "@mui/icons-material";
 import { Avatar, Box, Paper, Typography } from "@mui/material";
 import React from "react";
@@ -7,14 +8,16 @@ const Instructor = ({
   instructor,
   isMobile,
 }: {
-  instructor: {
-    values: Array<{
-      image: string;
-      name: string;
-      short_description: string;
-      description: string;
-    }>;
-  };
+  instructor:
+    | {
+        values: Array<{
+          image: string;
+          name: string;
+          short_description: string;
+          description: string;
+        }>;
+      }
+    | any;
   isMobile: boolean | undefined;
 }) => {
   return (

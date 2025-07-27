@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CheckCircle } from "@mui/icons-material";
 import { Box, Paper, Typography } from "@mui/material";
 import React from "react";
@@ -5,12 +6,14 @@ import React from "react";
 const LearningPoint = ({
   data,
 }: {
-  data: {
-    values: Array<{
-      id: string;
-      text: string;
-    }>;
-  };
+  data:
+    | {
+        values: Array<{
+          id: string;
+          text: string;
+        }>;
+      }
+    | any;
 }) => {
   console.log("LearningPoint component rendered with data:", data);
   return (
@@ -19,7 +22,7 @@ const LearningPoint = ({
         কোর্সটি করে যা শিখবেন
       </Typography>
       <div>
-        {data?.values?.map((point) => (
+        {data?.values?.map((point: { id: string; text: string }) => (
           <Box
             key={point.id}
             sx={{
