@@ -46,6 +46,8 @@ import CTA from "./CTA";
 import CheckList from "./CheckList";
 import AboutSection from "./AboutSection";
 import Testimonials from "./Testimonials";
+import Faq from "./Faq";
+import Features from "./Features";
 
 // Complete mock data from your API
 const courseData = {
@@ -269,90 +271,10 @@ export default function CoursePage() {
         {/* Instructor Info */}
 
         {/* FAQ Section */}
-        <Paper sx={{ p: 3, mt: 4, mb: 4 }}>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ fontWeight: "bold", mb: 3 }}
-          >
-            সচরাচর জিজ্ঞাসা
-          </Typography>
-          {courseData.faq.map((faqItem, index) => (
-            <Accordion key={index} sx={{ mb: 1 }}>
-              <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography variant="subtitle1" sx={{ fontWeight: "medium" }}>
-                  {faqItem.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ whiteSpace: "pre-line" }}
-                >
-                  {faqItem.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-        </Paper>
+        <Faq courseData={courseData} />
 
         {/* Features Section */}
-        <Paper sx={{ p: 3, mt: 4 }}>
-          <Typography
-            variant="h5"
-            component="h2"
-            sx={{ fontWeight: "bold", mb: 2 }}
-          >
-            Features
-          </Typography>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: isMobile
-                ? "1fr"
-                : "repeat(auto-fit, minmax(200px, 1fr))",
-              gap: "24px",
-            }}
-          >
-            <div style={{ textAlign: "center", padding: "16px" }}>
-              <Language sx={{ fontSize: 40, color: "#1976d2", mb: 1 }} />
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Multi-Language
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Available in Bengali & English
-              </Typography>
-            </div>
-            <div style={{ textAlign: "center", padding: "16px" }}>
-              <EmojiEvents sx={{ fontSize: 40, color: "#ff9800", mb: 1 }} />
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Certificate
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Industry recognized certificate
-              </Typography>
-            </div>
-            <div style={{ textAlign: "center", padding: "16px" }}>
-              <Schedule sx={{ fontSize: 40, color: "#4caf50", mb: 1 }} />
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Lifetime Access
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                Learn at your own pace
-              </Typography>
-            </div>
-            <div style={{ textAlign: "center", padding: "16px" }}>
-              <Assignment sx={{ fontSize: 40, color: "#e91e63", mb: 1 }} />
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                Mock Tests
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                20 practice tests included
-              </Typography>
-            </div>
-          </div>
-        </Paper>
+        <Features isMobile={isMobile} />
       </Container>
     </Box>
   );
