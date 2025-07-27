@@ -266,9 +266,18 @@ export default function CoursePage({ courseData }: { courseData: any }) {
         </div>
 
         {/* About Course Section */}
-        <AboutSection courseData={courseData} />
+        <AboutSection
+          courseData={courseData?.sections?.find(
+            (section) => section.type === "about"
+          )}
+        />
         {/* Student Testimonials */}
-        <Testimonials courseData={courseData} isMobile={isMobile} />
+        <Testimonials
+          courseData={courseData.sections?.find(
+            (section) => section.type == "testimonials"
+          )}
+          isMobile={isMobile}
+        />
 
         {/* Instructor Info */}
 

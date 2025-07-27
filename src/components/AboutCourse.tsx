@@ -26,6 +26,7 @@ import React from "react";
 import Instructor from "./Instructor";
 import CourseSummary from "./CourseSummary";
 import LearningPoint from "./LearningPoint";
+import CourseExclusiveFeature from "./CourseExclusiveFeature";
 
 const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
   // console.log("AboutCourse component rendered with courseData:", courseData);
@@ -167,31 +168,13 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
       {/* Course Summary */}
 
       {/* Course Exclusive Feature */}
-      <Paper sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-          কোর্স এক্সক্লুসিভ ফিচার
-        </Typography>
-        {courseData?.exclusiveFeatures?.map((feature, index) => (
-          <Box key={index} sx={{ mb: 3 }}>
-            <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1 }}>
-              {feature?.title}
-            </Typography>
-            <List dense>
-              {feature?.checklist?.map((item, itemIndex) => (
-                <ListItem key={itemIndex} sx={{ px: 0 }}>
-                  <ListItemIcon sx={{ minWidth: 32 }}>
-                    <CheckCircle sx={{ color: "#4caf50", fontSize: 18 }} />
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={item}
-                    primaryTypographyProps={{ variant: "body2" }}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Box>
-        ))}
-      </Paper>
+      <CourseExclusiveFeature
+        data={courseData?.sections?.find(
+          (section) => section.type === "feature_explanations"
+        )}
+      />
+
+      {/* Course details */}
 
       {/* Course details - Updated with complete data */}
       <Paper sx={{ p: 3, mb: 3 }}>

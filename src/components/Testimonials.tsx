@@ -17,12 +17,12 @@ const Testimonials = ({
   isMobile,
 }: {
   courseData: {
-    testimonials: {
+    values: Array<{
       name: string;
       profile_image: string;
-      description: string;
       testimonial: string;
-    }[];
+      description: string;
+    }>;
   };
   isMobile: boolean;
 }) => {
@@ -60,7 +60,7 @@ const Testimonials = ({
           gap: "24px",
         }}
       >
-        {courseData?.testimonials?.map((testimonial, index) => (
+        {courseData?.values?.slice(9, 12).map((testimonial, index) => (
           <Card
             key={index}
             sx={{
