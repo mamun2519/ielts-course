@@ -75,7 +75,7 @@ export default function CoursePage() {
     <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", py: 3 }}>
       <Container maxWidth="xl">
         {/* Requirements Section */}
-        <Paper sx={{ p: 3, mb: 4 }}>
+        {/* <Paper sx={{ p: 3, mb: 4 }}>
           <Typography
             variant="h5"
             component="h2"
@@ -87,7 +87,7 @@ export default function CoursePage() {
             Please follow the wireframe, or you can visit our landing page as
             mentioned previously
           </Typography>
-        </Paper>
+        </Paper> */}
 
         {/* Header (Not Mandatory) */}
         <Paper sx={{ p: 2, mb: 3, textAlign: "center", bgcolor: "#e3f2fd" }}>
@@ -280,7 +280,7 @@ export default function CoursePage() {
           >
             {/* Trailer */}
             <Paper sx={{ mb: 3, overflow: "hidden" }}>
-              <Typography
+              {/* <Typography
                 variant="h6"
                 sx={{
                   fontWeight: "bold",
@@ -291,12 +291,12 @@ export default function CoursePage() {
                 }}
               >
                 Trailer
-              </Typography>
+              </Typography> */}
               <Box sx={{ position: "relative" }}>
                 <CardMedia
                   component="img"
                   height="200"
-                  image="/course-preview.webp"
+                  image="https://cdn.10minuteschool.com/images/thumbnails/IELTS_new_16_9.png"
                   alt="Course trailer"
                 />
                 <Box
