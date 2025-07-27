@@ -2,13 +2,7 @@ import { FavoriteBorder } from "@mui/icons-material";
 import { Box, Button, IconButton, Typography } from "@mui/material";
 import React from "react";
 
-const CTA = ({
-  courseData,
-  isMobile,
-}: {
-  courseData: { cta_text: string };
-  isMobile: boolean;
-}) => {
+const CTA = ({ isMobile }: { isMobile: boolean }) => {
   return (
     <Box sx={{ p: 3 }}>
       <Box
@@ -25,7 +19,7 @@ const CTA = ({
           component="span"
           sx={{ fontWeight: "bold" }}
         >
-          ৳২,৫০০
+          ৳১,০০০
         </Typography>
         <Typography
           variant="h6"
@@ -54,7 +48,7 @@ const CTA = ({
             py: 1.5,
           }}
         >
-          {courseData?.cta_text}
+          কোর্সটি কিনুন
         </Button>
         <IconButton sx={{ border: 1, borderColor: "divider" }}>
           <FavoriteBorder />
