@@ -25,6 +25,7 @@ import {
 import React from "react";
 import Instructor from "./Instructor";
 import CourseSummary from "./CourseSummary";
+import LearningPoint from "./LearningPoint";
 
 const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
   // console.log("AboutCourse component rendered with courseData:", courseData);
@@ -154,40 +155,16 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
         data={courseData?.sections?.find(
           (section) => section.type === "features"
         )}
-        isMobile={isMobile}
       />
 
       {/* What you will learn by doing the course */}
-      <Paper sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-          কোর্সটি করে যা শিখবেন
-        </Typography>
-        <div>
-          {courseData?.learningPoints?.map((point, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 2,
-                mb: 2,
-              }}
-            >
-              <CheckCircle
-                sx={{
-                  color: "#4caf50",
-                  fontSize: 20,
-                  mt: 0.5,
-                  flexShrink: 0,
-                }}
-              />
-              <Typography variant="body2" color="text.secondary">
-                {point}
-              </Typography>
-            </Box>
-          ))}
-        </div>
-      </Paper>
+      <LearningPoint
+        data={courseData?.sections?.find(
+          (section) => section.type === "pointers"
+        )}
+      />
+
+      {/* Course Summary */}
 
       {/* Course Exclusive Feature */}
       <Paper sx={{ p: 3, mb: 3 }}>
