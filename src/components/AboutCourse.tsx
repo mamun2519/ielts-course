@@ -23,8 +23,10 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
+import Instructor from "./Instructor";
 
 const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
+  // console.log("AboutCourse component rendered with courseData:", courseData);
   return (
     <div
       style={{
@@ -88,7 +90,7 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
       </Paper>
 
       {/* Instructors */}
-      <Paper sx={{ p: 3, mb: 3 }}>
+      {/* <Paper sx={{ p: 3, mb: 3 }}>
         <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
           কোর্স ইন্সট্রাক্টর
         </Typography>
@@ -118,7 +120,14 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
             </Typography>
           </Box>
         </Box>
-      </Paper>
+      </Paper> */}
+
+      <Instructor
+        isMobile={isMobile}
+        instructor={courseData?.sections?.find(
+          (section) => section.type === "instructors"
+        )}
+      />
 
       {/* How the course is laid out */}
       <Paper sx={{ p: 3, mb: 3 }}>
@@ -181,7 +190,7 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
         {courseData?.exclusiveFeatures?.map((feature, index) => (
           <Box key={index} sx={{ mb: 3 }}>
             <Typography variant="subtitle1" sx={{ fontWeight: "bold", mb: 1 }}>
-              {feature.title}
+              {feature?.title}
             </Typography>
             <List dense>
               {feature?.checklist?.map((item, itemIndex) => (

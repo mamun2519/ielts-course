@@ -258,7 +258,7 @@ export default function CoursePage({ courseData }: { courseData: any }) {
             <Paper sx={{ mb: 3, overflow: "hidden" }}>
               <Trailer isMobile={isMobile} />
               {/* CTA */}
-              <CTA courseData={courseData} isMobile={isMobile} />
+              {/* <CTA courseData={courseData} isMobile={isMobile} /> */}
               {/* check list */}
               <CheckList courseData={courseData} />
             </Paper>
