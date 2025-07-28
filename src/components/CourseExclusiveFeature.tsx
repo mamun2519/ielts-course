@@ -23,7 +23,6 @@ const CourseExclusiveFeature = ({
       }
     | any;
 }) => {
-  console.log("CourseExclusiveFeature component rendered with data:", data);
   return (
     <Paper sx={{ p: 3, mb: 3 }}>
       <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
