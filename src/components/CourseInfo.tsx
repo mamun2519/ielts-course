@@ -12,8 +12,6 @@ import Testimonials from "./Testimonials";
 import Faq from "./Faq";
 import Features from "./Features";
 
-// type CourseData = typeof courseData;
-
 export default function CoursePage({ courseData }: { courseData: any }) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -21,8 +19,6 @@ export default function CoursePage({ courseData }: { courseData: any }) {
   return (
     <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", py: 3 }}>
       <Container maxWidth="xl">
-        {/* Header (Not Mandatory) */}
-
         {/* Main Content Layout - Responsive */}
         <div
           style={{

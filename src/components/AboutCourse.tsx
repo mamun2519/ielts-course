@@ -16,7 +16,6 @@ import CourseExclusiveFeature from "./CourseExclusiveFeature";
 import parse from "html-react-parser";
 
 const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
-  // console.log("AboutCourse component rendered with courseData:", courseData);
   return (
     <div
       style={{
@@ -120,25 +119,7 @@ const AboutCourse = ({ courseData, isMobile }: IAboutCourse) => {
       />
 
       {/* How the course is laid out */}
-      {/* <Paper sx={{ p: 3, mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: "bold", mb: 2 }}>
-          কোর্সটি যেভাবে সাজানো হয়েছে
-        </Typography>
-        <List>
-          {courseData?.features?.map((feature, index) => (
-            <ListItem key={index} sx={{ px: 0, alignItems: "flex-start" }}>
-              <ListItemIcon sx={{ mt: 1 }}>
-                <School lsx={{ color: "#1976d2" }} />
-              </ListItemIcon>
-              <ListItemText
-                primary={feature?.title}
-                secondary={feature?.subtitle}
-                primaryTypographyProps={{ fontWeight: "bold" }}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </Paper> */}
+     
       <CourseSummary
         data={courseData?.sections?.find(
           (section) => section.type === "features"
